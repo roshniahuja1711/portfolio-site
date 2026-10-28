@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roshni Ahuja — Interior Designer Portfolio</title>
+<meta name="description" content="Portfolio of Roshni Ahuja, junior interior designer: residential, healthcare, hospitality, workspace and retail projects with renders, mood boards and technical drawings.">
+<meta property="og:title" content="Roshni Ahuja — Interior Designer">
+<meta property="og:description" content="Residential, commercial and hospitality interiors — renders, mood boards and technical drawings.">
+<meta property="og:image" content="img/p014.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">R. Ahuja<span>.</span></a>
+  <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#journey">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#beyond">Beyond</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Portfolio &middot; 2026</p>
+      <h1>ROSHNI<br>AHUJA<b>.</b></h1>
+      <p class="lede">Junior interior designer shaping spaces that look thoughtful and work beautifully &mdash; residential, healthcare, hospitality, workspace and retail.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#projects">View projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-circles" aria-hidden="true">
+      <img src="img/t014.webp" alt="">
+      <img src="img/t038.webp" alt="">
+      <img src="img/t095.webp" alt="">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <figure class="portrait">
+        <img src="img/roshni.webp" alt="Roshni Ahuja" width="516" height="851">
+      </figure>
+      <div class="about-copy">
+        <h2 class="sec-title">Profile</h2>
+        <p class="big">Hello, I&rsquo;m <strong>Roshni Ahuja</strong>!</p>
+        <p>I&rsquo;m a recently graduated interior designer passionate about creating thoughtful, functional, and visually engaging spaces. Through my academic and internship experience, I have explored residential, commercial, and hospitality projects while gaining practical skills in design development, drawings, 3D visualization, material selection, and spatial planning.</p>
+        <p>I believe good design is about both how a space looks and how it feels and functions. As I begin my professional journey, I&rsquo;m seeking an opportunity to learn, contribute, and grow alongside experienced designers while bringing creativity, curiosity, and dedication to every project.</p>
+
+        <div class="cols">
+          <div>
+            <h3>Software</h3>
+            <ul class="chips"><li>AutoCAD</li><li>SketchUp</li><li>Lumion</li><li>Enscape</li><li>D5 Render</li><li>Adobe Photoshop</li></ul>
+          </div>
+          <div>
+            <h3>Hands-on</h3>
+            <ul class="chips"><li>Sketching</li><li>Model making</li><li>Hand drafting</li><li>Portrait rangoli</li><li>Photography</li><li>Wall painting</li></ul>
+          </div>
+        </div>
+
+        <h3>Achievements</h3>
+        <ul class="ach">
+          <li><b>1st</b> rank in batch, 5 consecutive semesters</li>
+          <li><b>2nd</b> position &mdash; Biobazaar 7.0</li>
+          <li><b>3rd</b> position &mdash; Biobazaar 8.0</li>
+          <li><b>3rd</b> position &mdash; Rangoli Competition</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <h2 class="sec-title light">My Design Journey</h2>
+      <p class="journey-intro">Four years at <strong>Amity University, Raipur</strong> &mdash; each semester a new chapter, from design fundamentals to a full thesis project.</p>
+      <ol class="timeline" id="timeline"></ol>
+      <div class="cols train">
+        <div>
+          <h3>Workshops &amp; training</h3>
+          <ul class="plain">
+            <li>IIA Odisha Chapter conference (3 days)</li>
+            <li>NPTEL &mdash; Role of Craft &amp; Technology in Interior Architecture</li>
+            <li>NPTEL &mdash; User Interface Design</li>
+            <li>Graphic skills workshop (4 days)</li>
+            <li>Landscape &amp; professional photography</li>
+            <li>Portrait rangoli, bottle art, resin art, clay modelling</li>
+            <li>GREENPLY material workshop</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Beyond the studio</h3>
+          <ul class="plain">
+            <li>Student sub-coordinator, Amity Exhibition 2025</li>
+            <li>Student head for graphics, Amispark</li>
+            <li>Wall painting &mdash; Amity University&rsquo;s plan</li>
+            <li>Silver, Sanghathan (cricket)</li>
+            <li>Group design competition: redesigning the Mahant Ghasidas Museum, Raipur</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT INDEX -->
+  <section class="index" id="projects">
+    <div class="wrap">
+      <h2 class="sec-title">Selected Projects</h2>
+      <p class="index-intro">Six design projects across residential, healthcare, hospitality, workspace and retail &mdash; plus freelance and internship work.</p>
+      <div class="circles" id="circles"></div>
+    </div>
+  </section>
+
+  <div id="project-list"></div>
+
+  <!-- BEYOND -->
+  <section class="beyond" id="beyond">
+    <div class="wrap">
+      <div class="proj-head">
+        <img class="strip" src="img/s112.webp" alt=""><span class="num">07</span>
+        <div><h2>Freelance, Internship &amp; Art</h2><i class="rule"></i></div>
+      </div>
+      <p class="beyond-intro">Beyond the six main projects: freelance visualisation and drafting, working drawings from my internship, and the hands-on creative work I do alongside design.</p>
+
+      <article class="block rv">
+        <div class="block-text">
+          <small>07.1 &middot; Freelance</small>
+          <h3>3D modelling &amp; rendering</h3>
+          <p>Creating 3D models, interior visualisations and realistic renders for design projects &mdash; bedrooms, wardrobes, study areas and bathrooms, rendered to show materials, lighting and mood.</p>
+          <ul class="chips"><li>SketchUp</li><li>Enscape</li><li>Lumion</li><li>D5 Render</li></ul>
+        </div>
+        <div id="g-beyond"></div>
+      </article>
+
+      <article class="block rv">
+        <div class="block-text">
+          <small>07.2 &middot; Freelance &amp; internship</small>
+          <h3>2D CAD drafting</h3>
+          <p>Preparation of architectural plans, furniture layouts and technical drawings in AutoCAD. These sheets are from my internship at ETH Design Studio, Ahmedabad: plans, bedroom and bathroom details, kitchen layout and elevations.</p>
+          <ul class="chips"><li>AutoCAD</li><li>Working drawings</li><li>Elevations &amp; details</li></ul>
+        </div>
+        <details class="dr" open>
+          <summary><span>Drawing sheets<em>15 sheets</em></span></summary>
+          <div id="g-eth"></div>
+        </details>
+      </article>
+
+      <article class="block rv">
+        <div class="block-text">
+          <small>07.3 &middot; College extracurricular</small>
+          <h3>Bottle art</h3>
+          <p>Decorative bottle painting and upcycling through creative artwork.</p>
+        </div>
+        <div id="g-bottle"></div>
+      </article>
+
+      <article class="block rv">
+        <div class="block-text">
+          <small>07.4 &middot; College extracurricular</small>
+          <h3>Portrait rangoli</h3>
+          <p>Creating artistic and realistic portrait rangoli using colours and creative compositions. Secured 3rd position in the Rangoli Competition.</p>
+        </div>
+        <div id="g-rangoli"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="thanks">THANK<br>YOU<b>.</b></p>
+      <div class="contact-card">
+        <h2>Let&rsquo;s work together</h2>
+        <p>I&rsquo;m looking for a junior interior designer role where I can learn, contribute and grow.</p>
+        <ul id="contact-links" class="contact-links"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><p>&copy; <span id="yr"></span> Roshni Ahuja &middot; All images and drawings are the designer&rsquo;s own work.</p></footer>
+
+<div class="lb" id="lb" hidden>
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-p" aria-label="Previous">&#8249;</button>
+  <button class="lb-n" aria-label="Next">&#8250;</button>
+  <img alt="">
+  <p class="lb-cap"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
