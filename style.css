@@ -205,8 +205,7 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 
 /* ---- Round 2: feedback from Roshni ---- */
 /* B&W thumbnails that turn to colour on hover/focus; the lightbox is always colour */
-.gcard img,.circle img,.hero-circles img{filter:grayscale(1) contrast(1.02);transition:filter .5s,transform .8s}
-.gcard button:hover img,.gcard button:focus-visible img,.circle:hover img,.circle:focus-visible img,.hero-circles:hover img{filter:none}
+.gcard img,.circle img,.hero-circles img{transition:transform .8s}
 .gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 20px;margin-top:20px}
 .gcards.one{grid-template-columns:1fr;margin-top:0}
 .gcard{margin:0}
@@ -215,8 +214,7 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 .gcard:hover img{transform:scale(1.04)}
 .gcards.one .gcard button{aspect-ratio:16/10}
 .gcards.one.art .gcard button{background:#fff}
-.gcards.one.art img{object-fit:contain;filter:grayscale(1)}
-.gcards.one.art button:hover img{filter:none}
+.gcards.one.art img{object-fit:contain}
 .badge{position:absolute;left:12px;bottom:12px;background:rgba(20,20,20,.78);color:#fff;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
 .gtitle{font-family:var(--serif);font-size:1.35rem;letter-spacing:.03em;margin-top:10px;line-height:1.2}
 .gcards.one .gtitle{display:none}
