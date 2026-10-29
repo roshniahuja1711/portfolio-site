@@ -174,7 +174,7 @@ $('#g-bottle').outerHTML = `<div class="gcards one art"><div class="gcard rv"><b
 $('#g-rangoli').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full(135)}" data-cap="Portrait rangoli"><img loading="lazy" src="${full(135)}" alt="Portrait rangoli"></button></div></div>`;
 
 /* Hero circles */
-document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['r014a', 'r038d', 'r095a'][i]); });
+document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['hero1', 'hero2', 'hero3'][i]); });
 
 /* Contact */
 const links = [
