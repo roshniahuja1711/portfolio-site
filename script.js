@@ -7,11 +7,13 @@ const CONTACT = {
   behance: ''     // full URL
 };
 
-/* ---- Content ---- */
+/* ---- Helpers ---- */
 const pad = n => String(n).padStart(3, '0');
 const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+const ids = (prefix, letters) => [...letters].map(l => prefix + l);
+// numbers = whole PDF pages (img/pNNN, thumbs img/tNNN); strings = single images (img/<id>, thumbs img/t_<id>)
 const full = p => typeof p === 'string' ? `img/${p}.webp` : `img/p${pad(p)}.webp`;
-const thumb = p => typeof p === 'string' ? `img/${p}.webp` : `img/t${pad(p)}.webp`;
+const thumb = p => typeof p === 'string' ? `img/t_${p}.webp` : `img/t${pad(p)}.webp`;
 
 const JOURNEY = [
   ['Semester 1', 'The fundamentals', 'Design principles, colour schemes, composition and basic building elements.'],
@@ -24,90 +26,140 @@ const JOURNEY = [
   ['Semester 8', 'Thesis', 'A Pet Boarding & Care Centre focused on comfort, safety, wellbeing and the bond between pets and caregivers.']
 ];
 
+/* A group = one cover image on the page; clicking opens every image of the group in the lightbox. */
 const PROJECTS = [
   {
-    strip: 6, n: '01', title: 'Dadashri Residence (DSR)', short: '5 BHK Residence', loc: 'Kathwada, Ahmedabad', area: '3228 sq. ft.', type: 'Residence',
+    strip: 6, n: '01', title: 'Dadashri Residence (DSR)', short: '5 BHK Residence',
+    loc: 'Kathwada, Ahmedabad, Gujarat', cardLoc: 'Ahmedabad, Gujarat', area: '3228 sq. ft.', type: 'Residence',
     tag: 'Residential · Design development & detailing',
-    cover: 14, mood: 8,
+    cover: 'r014a', mood: 8,
     brief: ['This 5BHK residence is envisioned as a premium, well-structured interior project where spatial zoning, functional clarity, and aesthetic coherence guide the overall design approach. The planning strategy focuses on establishing distinct private and semi-private zones while maintaining a fluid visual connection across the common areas.'],
     rooms: ['Master bedroom', 'Two daughters’ bedrooms', 'Guest bedroom', 'Mandir + office room', 'Living & social spaces: lounge, drawing room', 'Kitchen', 'Balcony'],
     intent: 'The residence adopts a contemporary interior vocabulary, integrating neutral tones, engineered materials, layered lighting, and bespoke furniture elements. The overall approach emphasizes spatial comfort, visual coherence, and a sophisticated residential character.',
-    renders: [14, 15, 16, 17, 10, 11],
-    extraTitle: 'Kitchen design — render options', extra: [12, 13],
-    plans: [9, 18, 19, 20],
-    drawings: range(21, 29), site: [30, 31]
+    sections: [
+      { title: 'Renders', groups: [
+        ['Drawing room', ids('r014', 'abcd').concat(ids('r015', 'dbac'))],
+        ['Guest room', ids('r016', 'abc')],
+        ['Master bedroom', ids('r011', 'bac')],
+        ['Mandir & office', ids('r017', 'abc')],
+        ['Daughter’s bedroom', ids('r010', 'bac')],
+        ['Kitchen', ids('r012', 'abcd').concat(ids('r013', 'abcd'))]
+      ] },
+      { title: 'Technical drawings', groups: [
+        ['Furniture layout', [9]],
+        ['Ceiling layout', [18, 21]],
+        ['Electrical layout', [19, 20]],
+        ['Elevations & details', range(22, 29)]
+      ] },
+      { title: 'On site', note: 'Execution progress from the project site.', groups: [
+        ['Site photos', ids('r030', 'abcdefg').concat(ids('r031', 'abdefg'))]
+      ] }
+    ]
   },
   {
-    strip: 32, n: '02', title: 'Derma Clinic (DCS)', short: 'Derma Clinic', loc: 'Sheoganj, Rajasthan', area: '357 sq. ft.', type: 'Healthcare centre',
+    strip: 32, n: '02', title: 'Derma Clinic (DCS)', short: 'Derma Clinic',
+    loc: 'Sheoganj, Rajasthan', cardLoc: 'Sheoganj, Rajasthan', area: '357 sq. ft.', type: 'Healthcare centre',
     tag: 'Healthcare · Soft minimal curves',
-    cover: 38, mood: 34,
+    cover: 'r038d', mood: 34,
     brief: ['The derma clinic is conceived as a calm, seamless environment shaped by a theme of soft minimal curves. The site layout focuses on smooth transitions between walls and ceilings, creating a unified and tranquil spatial experience ideal for dermatological treatments.', 'The design language is consistently applied across all three rooms:'],
     rooms: ['Reception area', 'Consultation room 1', 'Consultation room 2'],
     intent: 'The design theme revolves around soft minimal curves and a blush-pink palette, creating a calming and contemporary clinical atmosphere. Smooth transitions, rounded forms, and pastel tones unify the reception and both consultation rooms, giving the clinic a warm, serene, and cohesive identity.',
-    renders: [38, 39], plans: [36, 37], drawings: range(40, 51)
+    sections: [
+      { title: 'Renders', groups: [['Renders', ids('r038', 'abcd').concat(ids('r039', 'bce'))]] },
+      { title: 'Technical drawings', groups: [['Technical drawings', [36, 37].concat(range(40, 51))]] }
+    ]
   },
   {
-    strip: 52, n: '03', title: 'Mayfair, Goa', short: 'Mayfair Restaurant', loc: 'Goa', area: '4000 sq. ft. (excl. outdoor unit)', type: 'Commercial · Hospitality',
+    strip: 52, n: '03', title: 'Mayfair, Goa', short: 'Mayfair Restaurant',
+    loc: 'Goa', cardLoc: 'Goa', area: '4000 sq. ft. (excl. outdoor unit)', type: 'Commercial · Hospitality',
     tag: 'Semester 4 · Hand-drafted & CAD',
     cover: 57, mood: 54,
     brief: ['The restaurant is envisioned as a contemporary dining destination that combines indoor and outdoor dining experiences with recreational and social spaces. The planning approach focuses on creating a seamless connection between dining, entertainment, and leisure.'],
     rooms: ['Indoor seating area with stage', 'Outdoor seating area', 'Bar area', 'Barbeque area', 'Swimming pool', 'Pool deck area', 'Kitchen', 'Washing area unit', 'Public washrooms', 'Staff room with washroom'],
     intent: 'The design embraces a contemporary hospitality aesthetic, blending comfortable dining spaces with entertainment and leisure elements. Ambient lighting, cohesive materials, and seamless indoor-outdoor connectivity create a welcoming and sophisticated dining experience.',
-    handTitle: 'Hand-drafted sheets — nautical minimalism', hand: [56, 57, 58, 59],
-    drawings: range(60, 73), drawLabel: 'CAD drawings'
+    sections: [
+      { title: 'Hand-drafted sheets', note: 'Nautical minimalism — mood board, furniture layout, flooring layout and sectional elevations.', groups: [['Hand-drafted sheets', range(56, 59)]] },
+      { title: 'Technical drawings', groups: [['CAD drawings', range(60, 73)]] }
+    ]
   },
   {
-    strip: 74, n: '04', title: 'YS Office', short: 'YS Office', loc: 'Ahmedabad', area: '1300.91 sq. ft.', type: 'Workspace',
+    strip: 74, n: '04', title: 'YS Office', short: 'YS Office',
+    loc: 'Ahmedabad, Gujarat', cardLoc: 'Ahmedabad, Gujarat', area: '1300.91 sq. ft.', type: 'Workspace',
     tag: 'Internship project · ETH Design Studio',
-    cover: 79, mood: 76,
+    cover: 'r079c', mood: 76,
     brief: ['This project proposes a sophisticated office environment designed to balance productivity, privacy, and emotional well-being. The visual language is rooted in minimalism and calm pastel tones, primarily powder blue and warm beige. The reception features a stone-and-wood desk and a circular ceiling element that sets a strong identity for the space.'],
     rooms: ['Reception area', 'Workstation zone', 'Private lounge', 'Multifunctional bedroom-cum-office', 'Meditation room with integrated mandir'],
     intent: 'Natural lighting, indoor plants, and acoustic wall panels enhance the sensory experience, while modern lighting and modular furniture ensure functionality and flexibility — a nurturing environment where clarity and focus support a holistic work culture.',
-    renders: [78, 79], plans: [77], drawings: range(80, 88)
+    sections: [
+      { title: 'Renders', groups: [['Renders', ids('r078', 'abcdefgh').concat(ids('r079', 'abcdef'))]] },
+      { title: 'Technical drawings', groups: [['Technical drawings', [77].concat(range(80, 88))]] }
+    ]
   },
   {
-    strip: 90, n: '05', title: 'Pet Care & Boarding Centre', short: 'Pet Care & Boarding', loc: 'Vadodara', area: '5411.22 sq. ft.', type: 'Commercial',
+    strip: 90, n: '05', title: 'Pet Care & Boarding Centre', short: 'Pet Care & Boarding',
+    loc: 'Vadodara, Gujarat', cardLoc: 'Vadodara, Gujarat', area: '5411.22 sq. ft.', type: 'Commercial',
     tag: 'Thesis project',
-    cover: 94, mood: 92,
+    cover: 'r094c', mood: 92,
     brief: ['A pet care and boarding centre at Broadway Skyline, Vadodara — a mixed-use building with two commercial floors and the remaining floors dedicated to residential use. The facility provides a safe, hygienic and comfortable environment exclusively for dogs, integrating care, boarding and recreational activities.'],
     rooms: ['Display and reception unit', 'Treatment area for dogs', 'Kennel and grooming areas', 'Canine activity zone', 'Shared interaction and play area', 'Staff room, pantry and washroom', 'Service and maintenance area'],
     intent: 'The design focuses on canine comfort, safety and well-being through functional zoning and secure, easy-to-maintain spaces. Blue and yellow form the primary colour palette, as dogs can distinguish these colours more effectively than red and green. Durable surfaces, hygienic finishes and dedicated activity areas create a stimulating, pet-friendly environment.',
-    renders: [94, 95], plans: [93, 96], drawings: range(97, 101)
+    sections: [
+      { title: 'Renders', groups: [['Renders', ids('r094', 'abcd').concat(['r095a'])]] },
+      { title: 'Technical drawings', groups: [['Technical drawings', [93].concat(range(96, 101))]] }
+    ]
   },
   {
-    strip: 102, n: '06', title: 'Anand Jewellers, Raipur', short: 'Anand Jewellers', loc: 'Raipur', area: '', type: 'Commercial · Retail',
+    strip: 102, n: '06', title: 'Anand Jewellers, Raipur', short: 'Anand Jewellers',
+    loc: 'Raipur, Chhattisgarh', cardLoc: 'Raipur, Chhattisgarh', area: '', type: 'Commercial · Retail',
     tag: 'Semester 6 · Victorian–Roman concept',
-    cover: 105, mood: 105, moodWide: true,
+    cover: 105, mood: 105,
     brief: ['A jewellery showroom focused on elegance and brand storytelling, developed through a Victorian–Roman concept with a plum and rose palette, chandeliers and classical detailing across two floors.'],
     rooms: [], intent: '',
-    plans: ['f104'], planTitle: 'Base plans — ground & first floor',
-    drawings: range(106, 111), drawLabel: 'Plans, ceiling, electrical & elevations', openDrawings: true
+    sections: [
+      { title: 'Technical drawings', groups: [['Technical drawings', ['f104'].concat(range(106, 111))]] }
+    ]
   }
 ];
 
-const BEYOND_RENDERS = [132, 133];
+const BEYOND_RENDERS = ids('r132', 'abcdefghi').concat(ids('r133', 'bcdfhij'));
 const ETH = range(116, 130);
 
-/* ---- Helpers ---- */
+/* ---- Rendering ---- */
 const $ = (s, r = document) => r.querySelector(s);
-const el = (h) => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content.firstChild; };
-const btn = (p, group, cap) => `<button type="button" data-group="${group}" data-full="${full(p)}" data-cap="${cap}" aria-label="Open image: ${cap}"><img loading="lazy" src="${thumb(p)}" alt="${cap}"></button>`;
-const gallery = (pages, group, cap, cls = '') => `<div class="gal ${cls}">${pages.map((p, i) => btn(p, group, `${cap} ${i + 1}`)).join('')}</div>`;
+const cap = (title, i, n) => `${title} · ${i + 1} / ${n}`;
 
-/* ---- Render ---- */
-$('#timeline').innerHTML = JOURNEY.map(([s, t, d]) => `<li class="rv"><small>${s}</small><h4>${t}</h4><p>${d}</p></li>`).join('');
+// One cover card per group; the other images are hidden buttons so the lightbox can step through them.
+const groupCard = (key, title, list, unit) => {
+  const hidden = list.slice(1).map((p, i) =>
+    `<button hidden type="button" data-group="${key}" data-full="${full(p)}" data-cap="${cap(title, i + 1, list.length)}"></button>`).join('');
+  const word = unit || (list.length === 1 ? 'image' : 'images');
+  return `
+  <div class="gcard rv">
+    <button type="button" data-group="${key}" data-full="${full(list[0])}" data-cap="${cap(title, 0, list.length)}" aria-label="Open ${title}: ${list.length} ${word}">
+      <img loading="lazy" src="${thumb(list[0])}" alt="${title}">
+      <span class="badge">${list.length} ${word}</span>
+    </button>
+    ${hidden}
+    <p class="gtitle">${title}</p>
+  </div>`;
+};
+
+$('#timeline').innerHTML = JOURNEY.map(([s, t, d]) =>
+  `<li class="rv" tabindex="0" role="button" aria-pressed="false"><small>${s}</small><h4>${t}</h4><p>${d}</p></li>`).join('');
 
 $('#circles').innerHTML = PROJECTS.map(p => `
   <a class="circle rv" href="#project-${p.n}">
     <div class="disc"><img loading="lazy" src="${thumb(p.cover)}" alt="${p.short}"></div>
-    <small>${p.n}</small><strong>${p.short}</strong><span class="loc">${p.loc}</span>
+    <small>${p.n}</small><strong>${p.short}</strong><span class="loc">${p.cardLoc}</span>
   </a>`).join('');
 
 $('#project-list').innerHTML = PROJECTS.map(p => {
   const facts = [['Location', p.loc], p.area && ['Area', p.area], ['Type', p.type]].filter(Boolean)
     .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
   const rooms = p.rooms.length ? `<ul class="rooms">${p.rooms.map(r => `<li>${r}</li>`).join('')}</ul>` : '';
-  const g = `p${p.n}`;
+  const sections = p.sections.map((s, si) => `
+      <h3 class="sub">${s.title}</h3>${s.note ? `<p class="sub-note">${s.note}</p>` : ''}
+      <div class="gcards">${s.groups.map(([t, l], gi) => groupCard(`p${p.n}-${si}-${gi}`, t, l, s.title === 'Technical drawings' || s.title === 'Hand-drafted sheets' ? (l.length === 1 ? 'sheet' : 'sheets') : '')).join('')}</div>`).join('');
   return `
   <section class="project" id="project-${p.n}">
     <div class="wrap">
@@ -121,27 +173,22 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
           ${p.intent ? `<h3>Design intent</h3><p>${p.intent}</p>` : ''}
         </div>
         <div class="rv">
-          <button class="mood" type="button" data-group="${g}-mood" data-full="img/m${pad(p.mood)}.webp" data-cap="${p.short} — mood board" aria-label="Open mood board"><img loading="lazy" src="img/m${pad(p.mood)}.webp" alt="${p.short} mood board"></button>
+          <button class="mood" type="button" data-group="p${p.n}-mood" data-full="img/m${pad(p.mood)}.webp" data-cap="${p.short} — mood board" aria-label="Open mood board"><img loading="lazy" src="img/m${pad(p.mood)}.webp" alt="${p.short} mood board"></button>
           <p class="label">Project description &amp; mood board</p>
         </div>
       </div>
-      ${p.renders ? `<h3 class="sub">Renders</h3>${gallery(p.renders, g + '-r', p.short + ' render')}` : ''}
-      ${p.extra ? `<h3 class="sub">${p.extraTitle}</h3>${gallery(p.extra, g + '-x', 'Kitchen option', 'three')}` : ''}
-      ${p.hand ? `<h3 class="sub">${p.handTitle}</h3>${gallery(p.hand, g + '-h', 'Hand-drafted sheet')}` : ''}
-      ${p.plans ? `<h3 class="sub">${p.planTitle || 'Layouts'}</h3>${gallery(p.plans, g + '-pl', p.short + ' layout', 'drawings')}` : ''}
-      ${p.site ? `<h3 class="sub">On site</h3><p class="sub-note">Execution progress from the project site.</p>${gallery(p.site, g + '-s', 'Site photo')}` : ''}
-      <details class="dr"${p.openDrawings ? ' open' : ''}>
-        <summary><span>${p.drawLabel || 'Technical drawings'}<em>${p.drawings.length} sheets</em></span></summary>
-        ${gallery(p.drawings, g + '-d', p.short + ' drawing', 'drawings')}
-      </details>
+      ${sections}
     </div>
   </section>`;
 }).join('');
 
-$('#g-beyond').outerHTML = gallery(BEYOND_RENDERS, 'beyond-r', 'Freelance render', 'art');
-$('#g-eth').outerHTML = gallery(ETH, 'eth', 'ETH Design Studio drawing', 'drawings');
-$('#g-bottle').outerHTML = gallery([134], 'bottle', 'Bottle art', 'art');
-$('#g-rangoli').outerHTML = gallery([135], 'rangoli', 'Portrait rangoli', 'art');
+$('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
+$('#g-eth').outerHTML = `<div class="gcards one">${groupCard('eth', 'Drawing sheets', ETH, 'sheets')}</div>`;
+$('#g-bottle').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="bottle" data-full="${full(134)}" data-cap="Bottle art"><img loading="lazy" src="${full(134)}" alt="Bottle art"></button></div></div>`;
+$('#g-rangoli').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full(135)}" data-cap="Portrait rangoli"><img loading="lazy" src="${full(135)}" alt="Portrait rangoli"></button></div></div>`;
+
+/* Hero circles */
+document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['r014a', 'r038d', 'r095a'][i]); });
 
 /* Contact */
 const links = [
@@ -155,6 +202,13 @@ $('#contact-links').innerHTML = links.length
   ? links.map(([k, h, t]) => `<li><a href="${h}"${h.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}><span>${k}</span><span>${t}</span></a></li>`).join('')
   : '<li><a href="#top"><span>Contact details coming soon</span><span></span></a></li>';
 $('#yr').textContent = new Date().getFullYear();
+
+/* ---- Journey: click a semester to switch it to white with black text ---- */
+const toggleSem = li => { const on = li.classList.toggle('on'); li.setAttribute('aria-pressed', on); };
+$('#timeline').addEventListener('click', e => { const li = e.target.closest('li'); if (li) toggleSem(li); });
+$('#timeline').addEventListener('keydown', e => {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('li')) { e.preventDefault(); toggleSem(e.target); }
+});
 
 /* ---- Nav ---- */
 const nav = $('#nav'), burger = $('.burger'), menu = $('.nav nav');
@@ -177,10 +231,11 @@ document.querySelectorAll('.rv').forEach(n => rv.observe(n));
 /* ---- Lightbox ---- */
 const lb = $('#lb'), lbImg = $('img', lb), lbCap = $('.lb-cap', lb);
 let items = [], idx = 0, lastFocus = null;
-const show = () => { const b = items[idx]; lbImg.src = b.dataset.full; lbImg.alt = b.dataset.cap; lbCap.textContent = `${b.dataset.cap}  ·  ${idx + 1} / ${items.length}`; };
+const show = () => { const b = items[idx]; lbImg.src = b.dataset.full; lbImg.alt = b.dataset.cap; lbCap.textContent = b.dataset.cap; };
 const open = b => {
   items = [...document.querySelectorAll(`[data-group="${b.dataset.group}"]`)];
   idx = items.indexOf(b); lastFocus = b; show(); lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lb-x').focus();
+  lb.classList.toggle('single', items.length < 2);
 };
 const close = () => { lb.hidden = true; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
 const step = d => { idx = (idx + d + items.length) % items.length; show(); };
