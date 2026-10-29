@@ -32,18 +32,19 @@ const PROJECTS = [
     strip: 6, n: '01', title: 'Dadashri Residence (DSR)', short: '5 BHK Residence',
     loc: 'Kathwada, Ahmedabad, Gujarat', cardLoc: 'Ahmedabad, Gujarat', area: '3228 sq. ft.', type: 'Residence',
     tag: 'Residential · Design development & detailing',
-    cover: 'r014a', mood: 8,
+    cover: 'lv1', mood: 8,
     brief: ['This 5BHK residence is envisioned as a premium, well-structured interior project where spatial zoning, functional clarity, and aesthetic coherence guide the overall design approach. The planning strategy focuses on establishing distinct private and semi-private zones while maintaining a fluid visual connection across the common areas.'],
     rooms: ['Master bedroom', 'Two daughters’ bedrooms', 'Guest bedroom', 'Mandir + office room', 'Living & social spaces: lounge, drawing room', 'Kitchen', 'Balcony'],
     intent: 'The residence adopts a contemporary interior vocabulary, integrating neutral tones, engineered materials, layered lighting, and bespoke furniture elements. The overall approach emphasizes spatial comfort, visual coherence, and a sophisticated residential character.',
     sections: [
       { title: 'Renders', groups: [
-        ['Drawing room', ids('r014', 'abcd').concat(ids('r015', 'dbac'))],
-        ['Guest room', ids('r016', 'abc')],
-        ['Master bedroom', ids('r011', 'bac')],
-        ['Mandir & office', ids('r017', 'abc')],
-        ['Daughter’s bedroom', ids('r010', 'bac')],
-        ['Kitchen', ids('r012', 'abcd').concat(ids('r013', 'abcd'))]
+        ['Living room', ids('lv', '1234567')],
+        ['Guest room', ['g1', 'g2', 'g3']],
+        ['Master bedroom', ids('mb', '123456789').concat(['mb10'])],
+        ['Daughter’s bedroom 1', ['d01', 'd02', 'd03', 'd04', 'd05']],
+        ['Daughter’s bedroom 2', ['d06', 'd07', 'd08', 'd09', 'd10', 'd11', 'd12', 'd13', 'd14', 'd15', 'd16', 'd17']],
+        ['Mandir & office', ids('mo', '1234')],
+        ['Kitchen', ids('k', ['01','02','03','04','05','06','07','08','09','10','11'])]
       ] },
       { title: 'On site', note: 'Execution progress from the project site.', groups: [
         ['Site photos', ids('r030', 'abcdefg').concat(ids('r031', 'abdefg'))]
