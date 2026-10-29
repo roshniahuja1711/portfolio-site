@@ -13,7 +13,7 @@ const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 const ids = (prefix, letters) => [...letters].map(l => prefix + l);
 // numbers = whole PDF pages (img/pNNN, thumbs img/tNNN); strings = single images (img/<id>, thumbs img/t_<id>)
 const full = p => typeof p === 'string' ? `img/${p}.webp` : `img/p${pad(p)}.webp`;
-const thumb = p => typeof p === 'string' ? `img/t_${p}.webp` : `img/t${pad(p)}.webp`;
+const thumb = full; // covers use the full-size image so they stay sharp on retina screens
 
 const JOURNEY = [
   ['Semester 1', 'The fundamentals', 'Design principles, colour schemes, composition and basic building elements.'],
@@ -45,12 +45,6 @@ const PROJECTS = [
         ['Daughter’s bedroom', ids('r010', 'bac')],
         ['Kitchen', ids('r012', 'abcd').concat(ids('r013', 'abcd'))]
       ] },
-      { title: 'Technical drawings', groups: [
-        ['Furniture layout', [9]],
-        ['Ceiling layout', [18, 21]],
-        ['Electrical layout', [19, 20]],
-        ['Elevations & details', range(22, 29)]
-      ] },
       { title: 'On site', note: 'Execution progress from the project site.', groups: [
         ['Site photos', ids('r030', 'abcdefg').concat(ids('r031', 'abdefg'))]
       ] }
@@ -65,8 +59,7 @@ const PROJECTS = [
     rooms: ['Reception area', 'Consultation room 1', 'Consultation room 2'],
     intent: 'The design theme revolves around soft minimal curves and a blush-pink palette, creating a calming and contemporary clinical atmosphere. Smooth transitions, rounded forms, and pastel tones unify the reception and both consultation rooms, giving the clinic a warm, serene, and cohesive identity.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r038', 'abcd').concat(ids('r039', 'bce'))]] },
-      { title: 'Technical drawings', groups: [['Technical drawings', [36, 37].concat(range(40, 51))]] }
+      { title: 'Renders', groups: [['Renders', ids('r038', 'abcd').concat(ids('r039', 'bce'))]] }
     ]
   },
   {
@@ -78,8 +71,7 @@ const PROJECTS = [
     rooms: ['Indoor seating area with stage', 'Outdoor seating area', 'Bar area', 'Barbeque area', 'Swimming pool', 'Pool deck area', 'Kitchen', 'Washing area unit', 'Public washrooms', 'Staff room with washroom'],
     intent: 'The design embraces a contemporary hospitality aesthetic, blending comfortable dining spaces with entertainment and leisure elements. Ambient lighting, cohesive materials, and seamless indoor-outdoor connectivity create a welcoming and sophisticated dining experience.',
     sections: [
-      { title: 'Hand-drafted sheets', note: 'Nautical minimalism — mood board, furniture layout, flooring layout and sectional elevations.', groups: [['Hand-drafted sheets', range(56, 59)]] },
-      { title: 'Technical drawings', groups: [['CAD drawings', range(60, 73)]] }
+      { title: 'Hand-drafted sheets', note: 'Nautical minimalism concept — mood board, furniture and flooring layouts and sectional elevations, drafted by hand.', groups: [['Hand-drafted sheets', range(56, 59)]] }
     ]
   },
   {
@@ -91,8 +83,7 @@ const PROJECTS = [
     rooms: ['Reception area', 'Workstation zone', 'Private lounge', 'Multifunctional bedroom-cum-office', 'Meditation room with integrated mandir'],
     intent: 'Natural lighting, indoor plants, and acoustic wall panels enhance the sensory experience, while modern lighting and modular furniture ensure functionality and flexibility — a nurturing environment where clarity and focus support a holistic work culture.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r078', 'abcdefgh').concat(ids('r079', 'abcdef'))]] },
-      { title: 'Technical drawings', groups: [['Technical drawings', [77].concat(range(80, 88))]] }
+      { title: 'Renders', groups: [['Renders', ids('r078', 'abcdefgh').concat(ids('r079', 'abcdef'))]] }
     ]
   },
   {
@@ -104,8 +95,7 @@ const PROJECTS = [
     rooms: ['Display and reception unit', 'Treatment area for dogs', 'Kennel and grooming areas', 'Canine activity zone', 'Shared interaction and play area', 'Staff room, pantry and washroom', 'Service and maintenance area'],
     intent: 'The design focuses on canine comfort, safety and well-being through functional zoning and secure, easy-to-maintain spaces. Blue and yellow form the primary colour palette, as dogs can distinguish these colours more effectively than red and green. Durable surfaces, hygienic finishes and dedicated activity areas create a stimulating, pet-friendly environment.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r094', 'abcd').concat(['r095a'])]] },
-      { title: 'Technical drawings', groups: [['Technical drawings', [93].concat(range(96, 101))]] }
+      { title: 'Renders', groups: [['Renders', ids('r094', 'abcd').concat(['r095a'])]] }
     ]
   },
   {
@@ -115,14 +105,11 @@ const PROJECTS = [
     cover: 105, mood: 105,
     brief: ['A jewellery showroom focused on elegance and brand storytelling, developed through a Victorian–Roman concept with a plum and rose palette, chandeliers and classical detailing across two floors.'],
     rooms: [], intent: '',
-    sections: [
-      { title: 'Technical drawings', groups: [['Technical drawings', ['f104'].concat(range(106, 111))]] }
-    ]
+    sections: []
   }
 ];
 
 const BEYOND_RENDERS = ids('r132', 'abcdefghi').concat(ids('r133', 'bcdfhij'));
-const ETH = range(116, 130);
 
 /* ---- Rendering ---- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -159,7 +146,7 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
   const rooms = p.rooms.length ? `<ul class="rooms">${p.rooms.map(r => `<li>${r}</li>`).join('')}</ul>` : '';
   const sections = p.sections.map((s, si) => `
       <h3 class="sub">${s.title}</h3>${s.note ? `<p class="sub-note">${s.note}</p>` : ''}
-      <div class="gcards">${s.groups.map(([t, l], gi) => groupCard(`p${p.n}-${si}-${gi}`, t, l, s.title === 'Technical drawings' || s.title === 'Hand-drafted sheets' ? (l.length === 1 ? 'sheet' : 'sheets') : '')).join('')}</div>`).join('');
+      <div class="gcards">${s.groups.map(([t, l], gi) => groupCard(`p${p.n}-${si}-${gi}`, t, l, s.title === 'Hand-drafted sheets' ? (l.length === 1 ? 'sheet' : 'sheets') : '')).join('')}</div>`).join('');
   return `
   <section class="project" id="project-${p.n}">
     <div class="wrap">
@@ -183,7 +170,6 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
 }).join('');
 
 $('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
-$('#g-eth').outerHTML = `<div class="gcards one">${groupCard('eth', 'Drawing sheets', ETH, 'sheets')}</div>`;
 $('#g-bottle').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="bottle" data-full="${full(134)}" data-cap="Bottle art"><img loading="lazy" src="${full(134)}" alt="Bottle art"></button></div></div>`;
 $('#g-rangoli').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full(135)}" data-cap="Portrait rangoli"><img loading="lazy" src="${full(135)}" alt="Portrait rangoli"></button></div></div>`;
 
