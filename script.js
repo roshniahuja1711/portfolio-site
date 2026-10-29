@@ -47,7 +47,7 @@ const PROJECTS = [
         ['Kitchen', ids('k', ['01','02','03','04','05','06','07','08','09','10','11'])]
       ] },
       { title: 'On site', note: 'Execution progress from the project site.', groups: [
-        ['Site photos', ids('r030', 'abcdefg').concat(ids('r031', 'abdefg'))]
+        ['Site photos', ids('s', ['01','02','03','04','05','06','07','08','09','10','11'])]
       ] }
     ]
   },
@@ -55,12 +55,12 @@ const PROJECTS = [
     strip: 32, n: '02', title: 'Derma Clinic (DCS)', short: 'Derma Clinic',
     loc: 'Sheoganj, Rajasthan', cardLoc: 'Sheoganj, Rajasthan', area: '357 sq. ft.', type: 'Healthcare centre',
     tag: 'Healthcare · Soft minimal curves',
-    cover: 'r038d', mood: 34,
+    cover: 'dc3', mood: 34,
     brief: ['The derma clinic is conceived as a calm, seamless environment shaped by a theme of soft minimal curves. The site layout focuses on smooth transitions between walls and ceilings, creating a unified and tranquil spatial experience ideal for dermatological treatments.', 'The design language is consistently applied across all three rooms:'],
     rooms: ['Reception area', 'Consultation room 1', 'Consultation room 2'],
     intent: 'The design theme revolves around soft minimal curves and a blush-pink palette, creating a calming and contemporary clinical atmosphere. Smooth transitions, rounded forms, and pastel tones unify the reception and both consultation rooms, giving the clinic a warm, serene, and cohesive identity.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r038', 'abcd').concat(ids('r039', 'bce'))]] }
+      { title: 'Renders', groups: [['Renders', ids('dc', '12345678').concat(['dc9','dc10'])]] }
     ]
   },
   {
@@ -79,12 +79,16 @@ const PROJECTS = [
     strip: 74, n: '04', title: 'YS Office', short: 'YS Office',
     loc: 'Ahmedabad, Gujarat', cardLoc: 'Ahmedabad, Gujarat', area: '1300.91 sq. ft.', type: 'Workspace',
     tag: 'Internship project · ETH Design Studio',
-    cover: 'r079c', mood: 76,
+    cover: 'y02', mood: 76,
     brief: ['This project proposes a sophisticated office environment designed to balance productivity, privacy, and emotional well-being. The visual language is rooted in minimalism and calm pastel tones, primarily powder blue and warm beige. The reception features a stone-and-wood desk and a circular ceiling element that sets a strong identity for the space.'],
     rooms: ['Reception area', 'Workstation zone', 'Private lounge', 'Multifunctional bedroom-cum-office', 'Meditation room with integrated mandir'],
     intent: 'Natural lighting, indoor plants, and acoustic wall panels enhance the sensory experience, while modern lighting and modular furniture ensure functionality and flexibility — a nurturing environment where clarity and focus support a holistic work culture.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r078', 'abcdefgh').concat(ids('r079', 'abcdef'))]] }
+      { title: 'Renders', groups: [
+        ['Beige scheme', ['yso2', 'yso1', 'y01', 'y02']],
+        ['Blue scheme', ['y03','y04','y05','y06','y07','y08','y09','y10','y11','y12']],
+        ['Green scheme', ['y13','y14','y15','y16']]
+      ] }
     ]
   },
   {
