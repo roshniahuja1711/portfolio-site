@@ -114,7 +114,7 @@ const PROJECTS = [
   }
 ];
 
-const BEYOND_RENDERS = ids('fl', ['01','02','03','04','05','06','07','08','09','10','11','12','13','14']).concat(ids('r132', 'abcdefghi'), ids('r133', 'bcdfhij'));
+const BEYOND_RENDERS = ids('fl', ['01','02','03','04','05','06','07','08','09','10','11','12','13','14']).concat(['r132d','r132f','r132g','r132i','r133b','r133d']);
 
 /* ---- Rendering ---- */
 const $ = (s, r = document) => r.querySelector(s);
