@@ -52,15 +52,15 @@ const PROJECTS = [
     ]
   },
   {
-    strip: 32, n: '02', title: 'Derma Clinic (DCS)', short: 'Derma Clinic',
+    strip: 32, n: '02', title: 'Aish Clinic', short: 'Aish Clinic',
     loc: 'Sheoganj, Rajasthan', cardLoc: 'Sheoganj, Rajasthan', area: '357 sq. ft.', type: 'Healthcare centre',
     tag: 'Healthcare · Soft minimal curves',
     cover: 'dc3', mood: 34,
-    brief: ['The derma clinic is conceived as a calm, seamless environment shaped by a theme of soft minimal curves. The site layout focuses on smooth transitions between walls and ceilings, creating a unified and tranquil spatial experience ideal for dermatological treatments.', 'The design language is consistently applied across all three rooms:'],
+    brief: ['Aish Clinic is conceived as a calm, seamless environment shaped by a theme of soft minimal curves. The site layout focuses on smooth transitions between walls and ceilings, creating a unified and tranquil spatial experience ideal for dermatological treatments.', 'The design language is consistently applied across all three rooms:'],
     rooms: ['Reception area', 'Consultation room 1', 'Consultation room 2'],
     intent: 'The design theme revolves around soft minimal curves and a blush-pink palette, creating a calming and contemporary clinical atmosphere. Smooth transitions, rounded forms, and pastel tones unify the reception and both consultation rooms, giving the clinic a warm, serene, and cohesive identity.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('dc', '12345678').concat(['dc9','dc10'])]] }
+      { title: 'Renders', groups: [['Aish Clinic', ids('dc', '12345678').concat(['dc9','dc10'])]] }
     ]
   },
   {
@@ -153,9 +153,9 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
   </section>`;
 }).join('');
 
-$('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
-$('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 'bottle2'])}</div>`;
-$('#g-rangoli').outerHTML = `<div class="rg-row rv">${['rg1', 'rg2', 'rg3', 'rg4'].map((k, i) => `<button type="button" data-group="rangoli" data-full="${full(k)}" data-cap="Portrait rangoli ${i + 1} / 4"><img loading="lazy" src="${full(k)}" alt="Portrait rangoli ${i + 1}"></button>`).join('')}</div>`;
+$('#g-beyond').outerHTML = `<div class="gcards one rect">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
+$('#g-bottle').outerHTML = `<div class="gcards one art rect tall">${groupCard('bottle', 'Bottle art', ['bottle1', 'bottle2'])}</div>`;
+$('#g-rangoli').outerHTML = `<div class="rg-row rv">${[['rg1', .75], ['rg2', .99], ['rg3', 1], ['rg4', 1.05]].map(([k, ar], i) => `<button type="button" style="--ar:${ar}" data-group="rangoli" data-full="${full(k)}" data-cap="Portrait rangoli ${i + 1} / 4"><img loading="lazy" src="${full(k)}" alt="Portrait rangoli ${i + 1}"></button>`).join('')}</div>`;
 
 /* Hero circles */
 document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['hero1', 'hero2', 'hero3'][i]); });
