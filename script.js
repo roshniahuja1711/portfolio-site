@@ -64,19 +64,7 @@ const PROJECTS = [
     ]
   },
   {
-    strip: 52, n: '03', title: 'Mayfair, Goa', short: 'Mayfair Restaurant',
-    loc: 'Goa', cardLoc: 'Goa', area: '4000 sq. ft. (excl. outdoor unit)', type: 'Commercial · Hospitality',
-    tag: 'Semester 4 · Hand-drafted & CAD',
-    cover: 57, mood: 54,
-    brief: ['The restaurant is envisioned as a contemporary dining destination that combines indoor and outdoor dining experiences with recreational and social spaces. The planning approach focuses on creating a seamless connection between dining, entertainment, and leisure.'],
-    rooms: ['Indoor seating area with stage', 'Outdoor seating area', 'Bar area', 'Barbeque area', 'Swimming pool', 'Pool deck area', 'Kitchen', 'Washing area unit', 'Public washrooms', 'Staff room with washroom'],
-    intent: 'The design embraces a contemporary hospitality aesthetic, blending comfortable dining spaces with entertainment and leisure elements. Ambient lighting, cohesive materials, and seamless indoor-outdoor connectivity create a welcoming and sophisticated dining experience.',
-    sections: [
-      { title: 'Hand-drafted sheets', note: 'Nautical minimalism concept — mood board, furniture and flooring layouts and sectional elevations, drafted by hand.', groups: [['Hand-drafted sheets', range(56, 59)]] }
-    ]
-  },
-  {
-    strip: 74, n: '04', title: 'YS Office', short: 'YS Office',
+    strip: 74, n: '03', title: 'YS Office', short: 'YS Office',
     loc: 'Ahmedabad, Gujarat', cardLoc: 'Ahmedabad, Gujarat', area: '1300.91 sq. ft.', type: 'Workspace',
     tag: 'Internship project · ETH Design Studio',
     cover: 'y02', mood: 76,
@@ -92,7 +80,7 @@ const PROJECTS = [
     ]
   },
   {
-    strip: 90, n: '05', title: 'Pet Care & Boarding Centre', short: 'Pet Care & Boarding',
+    strip: 90, n: '04', title: 'Pet Care & Boarding Centre', short: 'Pet Care & Boarding',
     loc: 'Vadodara, Gujarat', cardLoc: 'Vadodara, Gujarat', area: '5411.22 sq. ft.', type: 'Commercial',
     tag: 'Thesis project',
     cover: 'pc1', mood: 92,
@@ -102,16 +90,17 @@ const PROJECTS = [
     sections: [
       { title: 'Renders', groups: [['Renders', ['pc1','pc2','pc3','pc4','pc5','pc6']]] }
     ]
-  },
-  {
-    strip: 102, n: '06', title: 'Anand Jewellers, Raipur', short: 'Anand Jewellers',
-    loc: 'Raipur, Chhattisgarh', cardLoc: 'Raipur, Chhattisgarh', area: '', type: 'Commercial · Retail',
-    tag: 'Semester 6 · Victorian–Roman concept',
-    cover: 105, mood: 105,
-    brief: ['A jewellery showroom focused on elegance and brand storytelling, developed through a Victorian–Roman concept with a plum and rose palette, chandeliers and classical detailing across two floors.'],
-    rooms: [], intent: '',
-    sections: []
   }
+];
+
+/* Mayfair and Anand Jewellers now sit under Freelance (07.2 / 07.3) */
+const FREELANCE_PROJECTS = [
+  { label: '07.2', title: 'Mayfair Restaurant, Goa', loc: 'Goa', area: '4000 sq. ft. (excl. outdoor unit)', type: 'Commercial · Hospitality',
+    brief: 'A contemporary dining destination combining indoor and outdoor dining with recreational and social spaces: indoor seating with a stage, outdoor seating, bar, barbeque, swimming pool and deck. Nautical minimalism concept, with mood board, furniture and flooring layouts and sectional elevations drafted by hand.',
+    key: 'fx-mayfair', gtitle: 'Mood board & hand-drafted sheets', list: ['m054', 56, 57, 58, 59] },
+  { label: '07.3', title: 'Anand Jewellers, Raipur', loc: 'Raipur, Chhattisgarh', area: '', type: 'Commercial · Retail',
+    brief: 'A jewellery showroom focused on elegance and brand storytelling, developed through a Victorian–Roman concept with a plum and rose palette, chandeliers and classical detailing across two floors.',
+    key: 'fx-jewellers', gtitle: 'Mood board', list: ['m105'] }
 ];
 
 const BEYOND_RENDERS = ids('fl', ['01','02','03','04','05','06','07','08','09','10','11','12','13','14']).concat(['r132d','r132f','r132g','r132i','r133b','r133d']);
@@ -175,6 +164,16 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
 }).join('');
 
 $('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
+$('#g-extra').outerHTML = FREELANCE_PROJECTS.map(f => `
+      <article class="block rv">
+        <div class="block-text">
+          <small>${f.label} &middot; Freelance</small>
+          <h3>${f.title}</h3>
+          <p>${f.brief}</p>
+          <p class="meta">${[f.loc, f.area, f.type].filter(Boolean).join(' &middot; ')}</p>
+        </div>
+        <div class="gcards one">${groupCard(f.key, f.gtitle, f.list, f.list.length > 2 ? '' : '')}</div>
+      </article>`).join('');
 $('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 134])}</div>`;
 $('#g-rangoli').outerHTML = `<div class="gcards one art plain"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full('rangoli')}" data-cap="Portrait rangoli"><img loading="lazy" src="${full('rangoli')}" alt="Portrait rangoli"></button></div></div>`;
 
