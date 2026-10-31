@@ -39,7 +39,7 @@ const PROJECTS = [
     sections: [
       { title: 'Renders', groups: [
         ['Living room', ids('lv', '123467')],
-        ['Guest room', ['g1', 'g2', 'g3', 'mb1']],
+        ['Guest room', ['g1', 'g2', 'g3', 'mb1', 'g4', 'g5', 'g6', 'g7']],
         ['Master bedroom', ids('mb', '23456789')],
         ['Daughter’s bedroom 1', ['d01', 'd02', 'd03', 'd04', 'd05']],
         ['Daughter’s bedroom 2', ['d06', 'd07', 'd08', 'd09', 'd10', 'd11', 'd12', 'd13', 'd14', 'd15', 'd16', 'd17']],
