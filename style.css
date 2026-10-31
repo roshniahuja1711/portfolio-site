@@ -281,3 +281,7 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 @media (max-width:560px){.gv-grid{grid-template-columns:1fr 1fr}}
 
 .block-text .meta{font-size:.78rem;letter-spacing:.08em;color:var(--muted);margin-top:12px}
+
+/* project index circles: B&W, colour on hover */
+.circle img{filter:grayscale(1);transition:filter .5s,transform .8s}
+.circle:hover img,.circle:focus-visible img{filter:none}
