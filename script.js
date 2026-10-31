@@ -38,9 +38,9 @@ const PROJECTS = [
     intent: 'The residence adopts a contemporary interior vocabulary, integrating neutral tones, engineered materials, layered lighting, and bespoke furniture elements. The overall approach emphasizes spatial comfort, visual coherence, and a sophisticated residential character.',
     sections: [
       { title: 'Renders', groups: [
-        ['Living room', ids('lv', '1234567')],
-        ['Guest room', ['g1', 'g2', 'g3']],
-        ['Master bedroom', ids('mb', '123456789').concat(['mb10'])],
+        ['Living room', ids('lv', '123467')],
+        ['Guest room', ['g1', 'g2', 'g3', 'mb1']],
+        ['Master bedroom', ids('mb', '23456789')],
         ['Daughter’s bedroom 1', ['d01', 'd02', 'd03', 'd04', 'd05']],
         ['Daughter’s bedroom 2', ['d06', 'd07', 'd08', 'd09', 'd10', 'd11', 'd12', 'd13', 'd14', 'd15', 'd16', 'd17']],
         ['Mandir & office', ids('mo', '1234')],
