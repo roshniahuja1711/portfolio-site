@@ -88,7 +88,7 @@ const PROJECTS = [
     rooms: ['Display and reception unit', 'Treatment area for dogs', 'Kennel and grooming areas', 'Canine activity zone', 'Shared interaction and play area', 'Staff room, pantry and washroom', 'Service and maintenance area'],
     intent: 'The design focuses on canine comfort, safety and well-being through functional zoning and secure, easy-to-maintain spaces. Blue and yellow form the primary colour palette, as dogs can distinguish these colours more effectively than red and green. Durable surfaces, hygienic finishes and dedicated activity areas create a stimulating, pet-friendly environment.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ['pc1','pc2','pc3','pc4','pc5','pc6']]] }
+      { title: 'Renders', groups: [['Pet Care & Boarding Centre', ['pc1','pc2','pc3','pc4','pc5','pc6']]] }
     ]
   }
 ];
