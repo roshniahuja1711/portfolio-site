@@ -176,7 +176,7 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
 
 $('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
 $('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 134])}</div>`;
-$('#g-rangoli').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full(135)}" data-cap="Portrait rangoli"><img loading="lazy" src="${full(135)}" alt="Portrait rangoli"></button></div></div>`;
+$('#g-rangoli').outerHTML = `<div class="gcards one art plain"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full('rangoli')}" data-cap="Portrait rangoli"><img loading="lazy" src="${full('rangoli')}" alt="Portrait rangoli"></button></div></div>`;
 
 /* Hero circles */
 document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['hero1', 'hero2', 'hero3'][i]); });
@@ -228,7 +228,7 @@ const open = b => {
   idx = items.indexOf(b); lastFocus = b; show(); lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lb-x').focus();
   lb.classList.toggle('single', items.length < 2);
 };
-const close = () => { lb.hidden = true; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
+const close = () => { lb.hidden = true; document.body.style.overflow = (typeof gv !== 'undefined' && !gv.hidden) ? 'hidden' : ''; if (typeof gv === 'undefined' || gv.hidden) lastFocus && lastFocus.focus(); };
 const step = d => { idx = (idx + d + items.length) % items.length; show(); };
 document.addEventListener('click', e => { const b = e.target.closest('button[data-full]'); if (b) open(b); });
 $('.lb-x').onclick = close; $('.lb-p').onclick = () => step(-1); $('.lb-n').onclick = () => step(1);
@@ -237,3 +237,22 @@ document.addEventListener('keydown', e => {
   if (lb.hidden) return;
   if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
 });
+
+
+/* ---- Group grid: a circle opens a tile grid of every image; a tile opens the lightbox ---- */
+const gv = $('#gv'), gvGrid = $('.gv-grid', gv), gvTitle = $('.gv-title', gv);
+const closeGrid = () => { gv.hidden = true; document.body.style.overflow = ''; };
+document.addEventListener('click', e => {
+  const b = e.target.closest('.gcard > button[data-group]');
+  if (!b) return;
+  const group = [...document.querySelectorAll(`[data-group="${b.dataset.group}"]`)];
+  if (group.length < 2) return;
+  e.stopPropagation();
+  gvTitle.textContent = b.closest('.gcard').querySelector('.gtitle').textContent;
+  gvGrid.innerHTML = group.map((g, i) => `<button type="button" data-i="${i}" aria-label="Open image ${i + 1}"><img loading="lazy" src="${g.dataset.full}" alt=""></button>`).join('');
+  gvGrid.onclick = ev => { const t = ev.target.closest('button[data-i]'); if (t) open(group[+t.dataset.i]); };
+  gv.hidden = false; gv.scrollTop = 0; document.body.style.overflow = 'hidden';
+}, true);
+$('.gv-x').onclick = closeGrid;
+gv.addEventListener('click', e => { if (e.target === gv) closeGrid(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.hidden && !gv.hidden) closeGrid(); });
