@@ -287,7 +287,6 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 .circle:hover img,.circle:focus-visible img{filter:none}
 
 /* portrait rangoli: four photos in one seamless horizontal strip (padding-box trick: works in Safari too) */
-.rg-row{width:100%;box-sizing:border-box;display:flex;flex-wrap:nowrap;gap:0;background:#fff;padding:14px;max-width:1100px;margin:0 auto}
+.rg-row{width:100%;box-sizing:border-box;display:flex;flex-wrap:nowrap;gap:0;background:none;padding:0;max-width:1100px;margin:0 auto}
 .rg-row button{position:relative;flex:0 0 25%;width:25%;height:0;padding:0 0 25%;border:0;background:none;cursor:zoom-in;overflow:hidden}
 .rg-row img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:640px){.rg-row{padding:6px}}
