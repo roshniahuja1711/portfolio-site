@@ -95,12 +95,12 @@ const PROJECTS = [
     strip: 90, n: '05', title: 'Pet Care & Boarding Centre', short: 'Pet Care & Boarding',
     loc: 'Vadodara, Gujarat', cardLoc: 'Vadodara, Gujarat', area: '5411.22 sq. ft.', type: 'Commercial',
     tag: 'Thesis project',
-    cover: 'r094c', mood: 92,
+    cover: 'pc1', mood: 92,
     brief: ['A pet care and boarding centre at Broadway Skyline, Vadodara — a mixed-use building with two commercial floors and the remaining floors dedicated to residential use. The facility provides a safe, hygienic and comfortable environment exclusively for dogs, integrating care, boarding and recreational activities.'],
     rooms: ['Display and reception unit', 'Treatment area for dogs', 'Kennel and grooming areas', 'Canine activity zone', 'Shared interaction and play area', 'Staff room, pantry and washroom', 'Service and maintenance area'],
     intent: 'The design focuses on canine comfort, safety and well-being through functional zoning and secure, easy-to-maintain spaces. Blue and yellow form the primary colour palette, as dogs can distinguish these colours more effectively than red and green. Durable surfaces, hygienic finishes and dedicated activity areas create a stimulating, pet-friendly environment.',
     sections: [
-      { title: 'Renders', groups: [['Renders', ids('r094', 'abcd').concat(['r095a'])]] }
+      { title: 'Renders', groups: [['Renders', ['pc1','pc2','pc3','pc4','pc5','pc6']]] }
     ]
   },
   {
@@ -114,7 +114,7 @@ const PROJECTS = [
   }
 ];
 
-const BEYOND_RENDERS = ids('r132', 'abcdefghi').concat(ids('r133', 'bcdfhij'));
+const BEYOND_RENDERS = ids('fl', ['01','02','03','04','05','06','07','08','09','10','11','12','13','14']).concat(ids('r132', 'abcdefghi'), ids('r133', 'bcdfhij'));
 
 /* ---- Rendering ---- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -175,7 +175,7 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
 }).join('');
 
 $('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
-$('#g-bottle').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="bottle" data-full="${full(134)}" data-cap="Bottle art"><img loading="lazy" src="${full(134)}" alt="Bottle art"></button></div></div>`;
+$('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 134])}</div>`;
 $('#g-rangoli').outerHTML = `<div class="gcards one art"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full(135)}" data-cap="Portrait rangoli"><img loading="lazy" src="${full(135)}" alt="Portrait rangoli"></button></div></div>`;
 
 /* Hero circles */
