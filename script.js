@@ -19,9 +19,9 @@ const JOURNEY = [
   ['Semester 1', 'The fundamentals', 'Design principles, colour schemes, composition and basic building elements.'],
   ['Semester 2', 'First home', 'Residential design through a 1BHK residence, along with logo design.'],
   ['Semester 3', 'Commercial interiors', 'A designer’s office and a cafeteria.'],
-  ['Semester 4', 'Experience & empathy', 'Mayfair Coastal Restaurant in Goa, and a pediatric hospital balancing aesthetics with comfort and safety.'],
+  ['Semester 4', 'Experience & empathy', 'A pediatric hospital balancing aesthetics with comfort and safety.'],
   ['Semester 5', 'Scale & detail', 'A clubhouse and a luxury society lobby — aesthetics, scale and technical detailing.'],
-  ['Semester 6', 'Contrasts', 'A jewellery showroom built on elegance and brand storytelling, and a flexible co-working space.'],
+  ['Semester 6', 'Contrasts', 'A flexible co-working space.'],
   ['Semester 7', 'Into practice', 'Internship at ETH Design Studio, Ahmedabad: design development, detailing, site coordination.'],
   ['Semester 8', 'Thesis', 'A Pet Boarding & Care Centre focused on comfort, safety, wellbeing and the bond between pets and caregivers.']
 ];
@@ -44,10 +44,10 @@ const PROJECTS = [
         ['Daughter’s bedroom 1', ['d01', 'd02', 'd03', 'd04', 'd05']],
         ['Daughter’s bedroom 2', ['d06', 'd07', 'd08', 'd09', 'd10', 'd11', 'd12', 'd13', 'd14', 'd15', 'd16', 'd17']],
         ['Mandir & office', ids('mo', '1234')],
-        ['Kitchen', ids('k', ['01','02','03','04','05','06','07','08','09','10','11'])]
+        ['Kitchen', ids('k', ['01','02','03','05','06','07','08','09','10','11'])]
       ] },
       { title: 'On site', note: 'Execution progress from the project site.', groups: [
-        ['Site photos', ids('s', ['01','02','03','04','05','06','07','08','09','10','11'])]
+        ['Site photos', ids('s', ['01','02','03','05','06','07','08','09','10','11'])]
       ] }
     ]
   },
@@ -91,16 +91,6 @@ const PROJECTS = [
       { title: 'Renders', groups: [['Renders', ['pc1','pc2','pc3','pc4','pc5','pc6']]] }
     ]
   }
-];
-
-/* Mayfair and Anand Jewellers now sit under Freelance (07.2 / 07.3) */
-const FREELANCE_PROJECTS = [
-  { label: '07.2', title: 'Mayfair Restaurant, Goa', loc: 'Goa', area: '4000 sq. ft. (excl. outdoor unit)', type: 'Commercial · Hospitality',
-    brief: 'A contemporary dining destination combining indoor and outdoor dining with recreational and social spaces: indoor seating with a stage, outdoor seating, bar, barbeque, swimming pool and deck. Nautical minimalism concept, with mood board, furniture and flooring layouts and sectional elevations drafted by hand.',
-    key: 'fx-mayfair', gtitle: 'Mood board & hand-drafted sheets', list: ['m054', 56, 57, 58, 59] },
-  { label: '07.3', title: 'Anand Jewellers, Raipur', loc: 'Raipur, Chhattisgarh', area: '', type: 'Commercial · Retail',
-    brief: 'A jewellery showroom focused on elegance and brand storytelling, developed through a Victorian–Roman concept with a plum and rose palette, chandeliers and classical detailing across two floors.',
-    key: 'fx-jewellers', gtitle: 'Mood board', list: ['m105'] }
 ];
 
 const BEYOND_RENDERS = ids('fl', ['01','02','03','04','05','06','07','08','09','10','11','12','13','14']).concat(['r132d','r132f','r132g','r132i','r133b','r133d']);
@@ -164,18 +154,8 @@ $('#project-list').innerHTML = PROJECTS.map(p => {
 }).join('');
 
 $('#g-beyond').outerHTML = `<div class="gcards one">${groupCard('beyond-r', 'Freelance renders', BEYOND_RENDERS)}</div>`;
-$('#g-extra').outerHTML = FREELANCE_PROJECTS.map(f => `
-      <article class="block rv">
-        <div class="block-text">
-          <small>${f.label} &middot; Freelance</small>
-          <h3>${f.title}</h3>
-          <p>${f.brief}</p>
-          <p class="meta">${[f.loc, f.area, f.type].filter(Boolean).join(' &middot; ')}</p>
-        </div>
-        <div class="gcards one">${groupCard(f.key, f.gtitle, f.list, f.list.length > 2 ? '' : '')}</div>
-      </article>`).join('');
-$('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 134])}</div>`;
-$('#g-rangoli').outerHTML = `<div class="gcards one art plain"><div class="gcard rv"><button type="button" data-group="rangoli" data-full="${full('rangoli')}" data-cap="Portrait rangoli"><img loading="lazy" src="${full('rangoli')}" alt="Portrait rangoli"></button></div></div>`;
+$('#g-bottle').outerHTML = `<div class="gcards one art">${groupCard('bottle', 'Bottle art', ['bottle1', 'bottle2'])}</div>`;
+$('#g-rangoli').outerHTML = `<div class="rg-row rv">${['rg1', 'rg2', 'rg3', 'rg4'].map((k, i) => `<button type="button" data-group="rangoli" data-full="${full(k)}" data-cap="Portrait rangoli ${i + 1} / 4"><img loading="lazy" src="${full(k)}" alt="Portrait rangoli ${i + 1}"></button>`).join('')}</div>`;
 
 /* Hero circles */
 document.querySelectorAll('.hero-circles img').forEach((img, i) => { img.src = thumb(['hero1', 'hero2', 'hero3'][i]); });
