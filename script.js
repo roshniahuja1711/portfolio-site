@@ -52,7 +52,7 @@ const PROJECTS = [
     ]
   },
   {
-    strip: 32, n: '02', title: 'Aish Clinic', short: 'Aish Clinic',
+    strip: 32, n: '02', title: 'Derma Clinic', short: 'Aish Clinic',
     loc: 'Sheoganj, Rajasthan', cardLoc: 'Sheoganj, Rajasthan', area: '357 sq. ft.', type: 'Healthcare centre',
     tag: 'Healthcare · Soft minimal curves',
     cover: 'dc3', mood: 34,
@@ -60,7 +60,7 @@ const PROJECTS = [
     rooms: ['Reception area', 'Consultation room 1', 'Consultation room 2'],
     intent: 'The design theme revolves around soft minimal curves and a blush-pink palette, creating a calming and contemporary clinical atmosphere. Smooth transitions, rounded forms, and pastel tones unify the reception and both consultation rooms, giving the clinic a warm, serene, and cohesive identity.',
     sections: [
-      { title: 'Renders', groups: [['Aish Clinic', ids('dc', '12345678').concat(['dc9','dc10'])]] }
+      { title: 'Renders', groups: [['Aish Clinic', ['dc0'].concat(ids('dc', '12345678'),['dc9','dc10'])]] }
     ]
   },
   {
