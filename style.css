@@ -78,7 +78,7 @@ h3{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:60
 
 /* index */
 .index-intro{max-width:38em;margin-bottom:56px;color:var(--muted)}
-.circles{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px) 24px}
+.circles{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,56px) clamp(24px,5vw,72px);max-width:760px;margin-inline:auto}
 .circle{display:block;text-decoration:none;text-align:center}
 .circle .disc{aspect-ratio:1;border-radius:50%;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 30px rgba(0,0,0,.12);transition:transform .45s,box-shadow .45s}
 .circle img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
@@ -181,7 +181,9 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 @media (max-width:560px){
   .wrap{width:calc(100% - 32px)}
   .timeline,.ach{grid-template-columns:1fr}
-  .circles{grid-template-columns:1fr;max-width:340px;margin-inline:auto}
+  .circles{gap:28px 16px}
+  .circle strong{font-size:1.1rem}
+  .circle span.loc{font-size:.7rem}
   .gal button,.gal.art button{grid-column:span 12}
   .gal.drawings button{grid-column:span 6}
   .facts{grid-template-columns:1fr 1fr}
@@ -296,3 +298,7 @@ footer{padding:28px 24px;text-align:center;font-size:.76rem;color:var(--muted);b
 .gcards.rect .gcard button{border-radius:3px;aspect-ratio:4/3;max-width:460px}
 .gcards.rect.tall .gcard{max-width:320px}
 .gcards.rect.tall .gcard button{aspect-ratio:3/4;max-width:320px}
+
+/* Bottle art: two photos side by side, like the rangoli strip */
+.rg-row.two{max-width:640px}
+.rg-row.two button{padding-bottom:66.2%}
