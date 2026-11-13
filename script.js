@@ -1,8 +1,8 @@
 /* ---- Contact details: fill these in; empty ones are hidden ---- */
 const CONTACT = {
-  email: '',      // e.g. 'roshni@example.com'
+  email: 'roshh.workk@gmail.com',      // e.g. 'roshni@example.com'
   phone: '',      // e.g. '+91 98765 43210'
-  linkedin: '',   // full URL
+  linkedin: 'https://www.linkedin.com/in/roshni-ahuja-61a581360',   // full URL
   instagram: '',  // full URL
   behance: ''     // full URL
 };
